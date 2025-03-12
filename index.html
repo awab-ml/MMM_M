@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mathematics Department</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .math-bg {
+            background: linear-gradient(rgba(13, 14, 15, 0.97), rgba(255, 255, 255, 0.97)),
+            url('https://public.readdy.ai/ai/img_res/8ec05288c9ceb16351703639a583eddf.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #1f2937;
+        }
+        .math-bg::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://public.readdy.ai/ai/img_res/61c64aef0b6e57a5808a099f96ede375.jpg');
+            background-size: cover;
+            opacity: 0.05;
+            pointer-events: none;
+            animation: float 20s infinite linear;
+        }
+        .math-bg::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://public.readdy.ai/ai/img_res/697c2443cbbc71593360cc7d036e032e.jpg');
+            background-size: cover;
+            opacity: 0.03;
+            pointer-events: none;
+            animation: float 15s infinite linear reverse;
+        }
+        .social-icon, .about-card, .student-card {
+            transition: all 0.3s ease;
+        }
+        .social-icon:hover {
+            transform: translateY(-3px);
+            color: var(--tw-colors-primary);
+        }
+        .about-card:hover, .student-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .student-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .student-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+            transform: translateY(100%);
+            transition: transform 0.6s ease;
+        }
+        .student-card:hover::before {
+            transform: translateY(0);
+        }
+        .girl-card {
+            background: linear-gradient(135deg, #F3E5F5 0%, #FFF1F9 100%);
+            border: 1px solid rgba(186,104,200,0.1);
+        }
+        .boy-card {
+            background: linear-gradient(135deg, #E3F2FD 0%, #F0FFFF 100%);
+            border: 1px solid rgba(66,165,245,0.1);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 1rem;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                z-index: 40;
+            }
+            .nav-menu.active {
+                display: block;
+            }
+            .nav-menu ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hamburger {
+                display: block;
+            }
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .hamburger {
+                display: none;
+            }
+            .nav-menu {
+                display: block;
+            }
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4A90E2',
+                        secondary: '#F0FFFF'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="math-bg min-h-screen bg-gray-50">
+    <header class="bg-gradient-to-r from-white/95 to-secondary/95 backdrop-blur-sm shadow-md fixed w-full z-50">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="w-10 md:w-14 h-10 md:h-14 flex items-center justify-center bg-gradient-to-br from-primary to-primary/80 rounded-full shadow-lg transform hover:rotate-12 transition-transform duration-300">
+                        <i class="ri-functions-line text-white text-xl md:text-3xl"></i>
+                    </div>
+                    <h1 class="text-2xl md:text-4xl font-['Montserrat'] font-bold bg-gradient-to-r from-gray-800 to-primary bg-clip-text text-transparent"> ∑ Mathematics Excellence √ </h1>
+                </div>
+                <button class="hamburger p-2">
+                    <i class="ri-menu-line text-2xl"></i>
+                </button>
+                <nav class="nav-menu">
+                    <ul class="flex flex-col md:flex-row space-y-4 md:space-y-0 md:space-x-8">
+                        <li><a href="#about" class="text-gray-700 hover:text-primary font-medium text-base md:text-lg flex items-center space-x-2 transition-colors duration-300"><i class="ri-information-line"></i><span>About</span></a></li>
+                        <li><a href="#girls" class="text-gray-700 hover:text-primary font-medium text-base md:text-lg flex items-center space-x-2 transition-colors duration-300"><i class="ri-group-line"></i><span>Girls Section</span></a></li>
+                        <li><a href="#boys" class="text-gray-700 hover:text-primary font-medium text-base md:text-lg flex items-center space-x-2 transition-colors duration-300"><i class="ri-team-line"></i><span>Boys Section</span></a></li>
+                        <li><a href="#future" class="text-gray-700 hover:text-primary font-medium text-base md:text-lg flex items-center space-x-2 transition-colors duration-300"><i class="ri-rocket-line"></i><span>Future</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div class="h-20 md:h-24"></div>
+    <main class="container mx-auto px-4 py-8 md:py-12">
+        <section id="about" class="mb-12 md:mb-20">
+            <h2 class="text-2xl md:text-3xl font-['Montserrat'] font-bold mb-6 md:mb-8 text-center bg-gradient-to-r from-primary to-blue-600 bg-clip-text text-transparent">About Our Department</h2>
+            <div class="w-20 md:w-24 h-1 bg-gradient-to-r from-primary to-blue-600 mx-auto mb-8 md:mb-12 rounded-full"></div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+                <div class="about-card p-4 md:p-6 rounded-lg shadow-lg bg-white">
+                    <div class="w-14 h-14 flex items-center justify-center bg-primary/10 rounded-full mb-4">
+                        <i class="ri-medal-line text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold mb-3">Excellence in Education</h3>
+                    <p class="text-gray-600 text-sm md:text-base">Our department is committed to providing world-class mathematics education through innovative teaching methods and personalized attention.</p>
+                </div>
+                <div class="about-card p-4 md:p-6 rounded-lg shadow-lg bg-white">
+                    <div class="w-14 h-14 flex items-center justify-center bg-primary/10 rounded-full mb-4">
+                        <i class="ri-team-line text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold mb-3">Expert Faculty</h3>
+                    <p class="text-gray-600 text-sm md:text-base">Learn from distinguished professors and researchers who are leaders in their respective mathematical fields.</p>
+                </div>
+                <div class="about-card p-4 md:p-6 rounded-lg shadow-lg bg-white">
+                    <div class="w-14 h-14 flex items-center justify-center bg-primary/10 rounded-full mb-4">
+                        <i class="ri-lightbulb-line text-primary text-xl"></i>
+                    </div>
+                    <h3 class="text-lg md:text-xl font-bold mb-3">Research Opportunities</h3>
+                    <p class="text-gray-600 text-sm md:text-base">Engage in cutting-edge research projects and collaborate with peers on mathematical discoveries.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="girls" class="mb-12 md:mb-16">
+            <h2 class="text-2xl md:text-3xl font-['Montserrat'] font-bold mb-6 md:mb-8 text-center bg-gradient-to-r from-purple-600 to-pink-500 bg-clip-text text-transparent">Girls Section</h2>
+            <div class="w-20 md:w-24 h-1 bg-gradient-to-r from-purple-600 to-pink-500 mx-auto mb-8 md:mb-12 rounded-full"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+                <script>
+    const girls = [
+        { name: "ssssssss", img: "https://creator.nightcafe.studio/jobs/dvLse0uVJZxUydSEIiQ7/dvLse0uVJZxUydSEIiQ7--1--q3k7c.jpg" },
+        { name: "Sophia Chen", img: "sophia.jpg" },
+        { name: "Olivia Williams", img: "olivia.jpg" },
+        { name: "Isabella Garcia", img: "isabella.jpg" },
+        { name: "Ava Martinez", img: "ava.jpg" },
+        { name: "Mia Johnson", img: "mia.jpg" },
+        { name: "Charlotte Davis", img: "charlotte.jpg" },
+        { name: "Amelia Wilson", img: "amelia.jpg" },
+        { name: "Harper Anderson", img: "harper.jpg" },
+        { name: "Evelyn Taylor", img: "evelyn.jpg" },
+        { name: "Elizabeth Brown", img: "elizabeth.jpg" },
+        { name: "Victoria Moore", img: "victoria.jpg" },
+        { name: "Grace Miller", img: "grace.jpg" }
+    ];
+
+    girls.forEach((girl) => {
+        document.write(`
+            <div class="student-card girl-card rounded-lg p-4 shadow-lg">
+                <div class="relative">
+                    <img src="${girl.img}" class="w-full h-32 sm:h-36 md:h-40 object-cover rounded-full mb-4" alt="${girl.name}">
+                    <div class="absolute top-0 right-0">
+                        <i class="ri-award-line text-yellow-500"></i>
+                    </div>
+                </div>
+                <h3 class="text-center font-medium mb-2 text-sm md:text-base">${girl.name}</h3>
+                <div class="flex justify-center space-x-2">
+                    <i class="ri-function-line text-primary"></i>
+                    <i class="ri-brackets-line text-primary"></i>
+                    <i class="ri-divide-line text-primary"></i>
+                </div>
+            </div>
+        `);
+    });
+</script>
+
+            </div>
+        </section>
+
+        <section id="boys" class="mb-12 md:mb-16">
+            <h2 class="text-2xl md:text-3xl font-['Montserrat'] font-bold mb-6 md:mb-8 text-center bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">Boys Section</h2>
+            <div class="w-20 md:w-24 h-1 bg-gradient-to-r from-blue-600 to-cyan-500 mx-auto mb-8 md:mb-12 rounded-full"></div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
+                <script>
+    const boys = [
+        { name: "William Smith", img: "william.jpg" },
+        { name: "James Johnson", img: "james.jpg" },
+        { name: "Oliver Brown", img: "oliver.jpg" },
+        { name: "Benjamin Lee", img: "benjamin.jpg" },
+        { name: "Lucas Wang", img: "lucas.jpg" },
+        { name: "Henry Wilson", img: "henry.jpg" },
+        { name: "Alexander Davis", img: "alexander.jpg" },
+        { name: "Sebastian Rodriguez", img: "sebastian.jpg" },
+        { name: "Jack Thompson", img: "jack.jpg" },
+        { name: "Daniel Kim", img: "daniel.jpg" },
+        { name: "Matthew Chen", img: "matthew.jpg" },
+        { name: "David Garcia", img: "david.jpg" },
+        { name: "Joseph Taylor", img: "joseph.jpg" }
+    ];
+
+    boys.forEach((boy) => {
+        document.write(`
+            <div class="student-card boy-card rounded-lg p-4 shadow-lg">
+                <div class="relative">
+                    <img src="${boy.img}" class="w-full h-32 sm:h-36 md:h-40 object-cover rounded-full mb-4" alt="${boy.name}">
+                    <div class="absolute top-0 right-0">
+                        <i class="ri-award-line text-yellow-500"></i>
+                    </div>
+                </div>
+                <h3 class="text-center font-medium mb-2 text-sm md:text-base">${boy.name}</h3>
+                <div class="flex justify-center space-x-2">
+                    <i class="ri-function-line text-primary"></i>
+                    <i class="ri-brackets-line text-primary"></i>
+                    <i class="ri-divide-line text-primary"></i>
+                </div>
+            </div>
+        `);
+    });
+</script>
+
+            </div>
+        </section>
+
+        <section id="future" class="mb-12 md:mb-20">
+            <h2 class="text-2xl md:text-3xl font-['Montserrat'] font-bold mb-6 md:mb-8 text-center bg-gradient-to-r from-violet-600 to-primary bg-clip-text text-transparent">Future of Mathematics</h2>
+            <div class="w-20 md:w-24 h-1 bg-gradient-to-r from-violet-600 to-primary mx-auto mb-8 md:mb-12 rounded-full"></div>
+            <div class="bg-white/50 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-lg">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+                    <div>
+                        <h3 class="text-xl md:text-2xl font-bold mb-4">Shaping Tomorrow's Leaders</h3>
+                        <p class="text-gray-600 mb-6 text-sm md:text-base">Our department is dedicated to preparing students for the challenges of tomorrow. We focus on developing critical thinking, problem-solving abilities, and innovative approaches to mathematical concepts.</p>
+                        <div class="space-y-4">
+                            <div class="flex items-start space-x-3">
+                                <i class="ri-check-line text-primary text-xl mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-sm md:text-base">Advanced Research Programs</h4>
+                                    <p class="text-gray-600 text-xs md:text-sm">Access to cutting-edge research opportunities and modern facilities.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="ri-check-line text-primary text-xl mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-sm md:text-base">Industry Partnerships</h4>
+                                    <p class="text-gray-600 text-xs md:text-sm">Collaboration with leading technology companies and research institutions.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start space-x-3">
+                                <i class="ri-check-line text-primary text-xl mt-1"></i>
+                                <div>
+                                    <h4 class="font-semibold text-sm md:text-base">Global Network</h4>
+                                    <p class="text-gray-600 text-xs md:text-sm">International exchange programs and worldwide academic connections.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="https://public.readdy.ai/ai/img_res/2d334c1c78d1232e888c1fd693fb04bc.jpg"
+                            class="rounded-lg shadow-lg w-full" alt="Future of Mathematics">
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-gray-50 text-gray-800 mt-8 md:mt-12 py-8 md:py-12" style="background: linear-gradient(rgba(249, 250, 251, 0.97), rgba(249, 250, 251, 0.97)), url('https://public.readdy.ai/ai/img_res/49e9ced31e467a3a2362d229714ee1ed.jpg'); background-size: cover; background-position: center;">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-6 md:mb-8">
+                <div>
+                    <h3 class="text-lg md:text-xl font-bold mb-4">Contact Us</h3>
+                    <div class="space-y-2 text-sm md:text-base">
+                        <p class="flex items-center space-x-2"><i class="ri-map-pin-line text-primary"></i><span>123 University Avenue, City, Country</span></p>
+                        <p class="flex items-center space-x-2"><i class="ri-phone-line text-primary"></i><span>+1 234 567 890</span></p>
+                        <p class="flex items-center space-x-2"><i class="ri-mail-line text-primary"></i><span>math@university.edu</span></p>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg md:text-xl font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2 text-sm md:text-base">
+                        <li><a href="#about" class="hover:text-primary transition-colors">About Us</a></li>
+                        <li><a href="#girls" class="hover:text-primary transition-colors">Girls Section</a></li>
+                        <li><a href="#boys" class="hover:text-primary transition-colors">Boys Section</a></li>
+                        <li><a href="#future" class="hover:text-primary transition-colors">Future</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg md:text-xl font-bold mb-4">Resources</h3>
+                    <ul class="space-y-2 text-sm md:text-base">
+                        <li><a href="#" class="hover:text-primary transition-colors">Research Papers</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Student Portal</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Library</a></li>
+                        <li><a href="#" class="hover:text-primary transition-colors">Events</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="text-lg md:text-xl font-bold mb-4">Follow Us</h3>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm"><i class="ri-facebook-fill text-xl"></i></a>
+                        <a href="#" class="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm"><i class="ri-twitter-fill text-xl"></i></a>
+                        <a href="#" class="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm"><i class="ri-linkedin-fill text-xl"></i></a>
+                        <a href="#" class="social-icon w-10 h-10 flex items-center justify-center rounded-full bg-white shadow-sm"><i class="ri-instagram-fill text-xl"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-300 pt-6 md:pt-8 mt-6 md:mt-8 bg-black text-white rounded-lg shadow-lg">
+                <div class="flex flex-col md:flex-row justify-between items-center p-4 md:p-6">
+                    <div class="flex items-center space-x-4 mb-4 md:mb-0">
+                        <i class="ri-function-line text-white text-xl md:text-2xl"></i>
+                        <i class="ri-brackets-line text-white text-xl md:text-2xl"></i>
+                        <i class="ri-divide-line text-white text-xl md:text-2xl"></i>
+                    </div>
+                    <p class="text-white font-medium text-sm md:text-base">© 2025 Mathematics Department. All rights reserved.</p>
+                    <div class="flex items-center space-x-4 mt-4 md:mt-0">
+                        <a href="#" class="text-white hover:text-primary transition-colors text-sm md:text-base">Privacy Policy</a>
+                        <a href="#" class="text-white hover:text-primary transition-colors text-sm md:text-base">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            hamburger.querySelector('i').classList.toggle('ri-menu-line');
+            hamburger.querySelector('i').classList.toggle('ri-close-line');
+        });
+
+        // Close menu when clicking a link on mobile
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('active');
+                    hamburger.querySelector('i').classList.add('ri-menu-line');
+                    hamburger.querySelector('i').classList.remove('ri-close-line');
+                }
+            });
+        });
+
+        // Card interactions for both desktop and mobile
+        document.querySelectorAll('.student-card').forEach(card => {
+            // Mouse events for desktop
+            card.addEventListener('mouseenter', () => {
+                if (window.innerWidth > 768) {
+                    card.style.transform = 'scale(1.05)';
+                }
+            });
+            card.addEventListener('mouseleave', () => {
+                if (window.innerWidth > 768) {
+                    card.style.transform = 'scale(1)';
+                }
+            });
+            
+            // Touch events for mobile
+            card.addEventListener('touchstart', () => {
+                card.style.transform = 'scale(1.05)';
+            });
+            card.addEventListener('touchend', () => {
+                setTimeout(() => {
+                    card.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+
+        // Adjust layout on window resize
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                navMenu.classList.remove('active');
+                hamburger.querySelector('i').classList.add('ri-menu-line');
+                hamburger.querySelector('i').classList.remove('ri-close-line');
+            }
+        });
+    </script>
+</body>
+</html>
